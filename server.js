@@ -169,6 +169,6 @@ m.connect().then(() => {
 
  /*
     Routes to the App Server
-    https://newsyserver.azurewebsites.net/
+    
 
  */ 
