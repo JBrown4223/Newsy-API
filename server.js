@@ -102,7 +102,7 @@ app.get("/api/users/:id", (req,res)=>{
 })
 
 //Get the top US stories 
-app.get("/api/us-news/:id", (req, res)=>{
+app.get("/api/us-news", (req, res)=>{
         newsapi.v2.topHeadlines({
            language: 'en',
            country: 'us',
@@ -115,7 +115,7 @@ app.get("/api/us-news/:id", (req, res)=>{
 });
 
 //Get the top Canadian stories
-app.get("/api/can-news/:id", (req,res) =>{
+app.get("/api/can-news", (req,res) =>{
         newsapi.v2.topHeadlines({
             language: 'en',
             country: 'ca',
