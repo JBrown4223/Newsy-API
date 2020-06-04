@@ -132,7 +132,7 @@ app.get("/api/newsSearch/:search", (req,res)=>{
   newsapi.v2.everything({
     q: req.params.search,
     language: 'en',
-    from: '2020-04-15',
+    from: '2020-05-15',
     sortBy: 'relevancy',
    }).then(response => {
              res.status(200).json({response})  
@@ -169,6 +169,6 @@ m.connect().then(() => {
 
  /*
     Routes to the App Server
-    https://glacial-plains-58754.herokuapp.com/ 
+    https://glacial-plains-58754.herokuapp.com/
 
  */ 
