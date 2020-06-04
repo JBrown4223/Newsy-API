@@ -136,7 +136,7 @@ app.get("/api/newsSearch/:search", (req,res)=>{
     page: 2,
     sortBy: 'relevancy',
    }).then(response => {
-             res.status(200).json(response)  
+             res.status(200).json(response.articles)  
          
    });
 });
