@@ -131,7 +131,8 @@ module.exports = function(){
             //Get Categories
             getCategories: function(id){
                 return new Promise((resolve, reject) =>{
-                    appUser.findById( id, (err, item) => {
+                    user.findOne({"userName": { "$regex": username, "$options": "i"}},
+                    (err, item) => {
                         if(err)
                           return reject(error);
                         if(item){
