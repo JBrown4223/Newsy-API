@@ -127,6 +127,20 @@ module.exports = function(){
                     })
                     
                 })
+            },
+            //Get Categories
+            getCategories: function(id){
+                return new Promise((resolve, reject) =>{
+                    appUser.findById( id, (err, item) => {
+                        if(err)
+                          return reject(error);
+                        if(item){
+                            return resolve(item.categories);
+                        }
+                        else
+                            return reject('This opperation failed')
+                    })
+                })
             }
 
             

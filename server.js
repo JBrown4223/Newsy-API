@@ -129,10 +129,11 @@ app.get("/api/can-news", (req,res) =>{
 
 
 app.get("/api/newsSearch/:search", (req,res)=>{
+  let currentDate = new Date()
   newsapi.v2.everything({
     q: req.params.search,
     language: 'en',
-    from: '2020-06-01',
+    from: currentDate,
     page: 2,
     sortBy: 'relevancy',
    }).then(response => {
@@ -140,6 +141,37 @@ app.get("/api/newsSearch/:search", (req,res)=>{
          
    });
 });
+
+//User Specific Top Stories
+app.get("/api/userStories/:id", (req,res) => {
+   m.getCategories(req.params.id)
+   .then((data) =>{
+    let currentDate = new Date()
+    let categories = [];   
+    let stories = [];
+
+       for( i in data){
+         categories.push(data[i].value)
+       }
+
+        for( i in categories){
+          newsapi.v2.everything({
+             q: categories[i],
+             language: 'en',
+             from: currentDate,
+             page: 2,
+             sortBy: 'relevancy',
+            }).then(response => {
+                   res.status(200).json(response.articles)  
+               
+            });
+         }
+   })
+   .catch((error) =>{
+     res.status(404).json({'message': error})
+   })
+
+})
 
 //Add to history
 app.post("/api/addHistory/:id", (req,res) =>{
