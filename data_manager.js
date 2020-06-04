@@ -129,9 +129,10 @@ module.exports = function(){
                 })
             },
             //Get Categories
-            getCategories: function(id){
+            getCategories: function(user){
+                const u = appUser;
                 return new Promise((resolve, reject) =>{
-                    user.findOne({"userName": { "$regex": username, "$options": "i"}},
+                    u.findOne({"userName": { "$regex": user, "$options": "i"}},
                     (err, item) => {
                         if(err)
                           return reject(error);
